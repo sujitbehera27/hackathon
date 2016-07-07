@@ -1,0 +1,32 @@
+.mdContentClass{
+	width : 100%;
+}
+.mdCenterClass{
+	display:block;
+	text-align: center !important;
+}
+.contentInputBox{
+	text-align: center;
+	color: grey;
+	width: 70%;
+  margin: 2% 15%;
+}
+.micSize{
+	font-size: 30px;
+	line-height: 0;
+}
+.questionContentDiv{
+	border: 1px solid black;
+	border-radius: 3px;
+}
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+	text-align: center;
+}
+.rippleMoreOpacity{
+	opacity:1;
+}
+..rippleMoreOpacity{
+	opacity:0.1;
+}

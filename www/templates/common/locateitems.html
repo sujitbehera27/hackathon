@@ -1,0 +1,64 @@
+<ion-view locate-items view-title="Find Location">
+<ion-content style="background-color:#f1f4f7">
+  <!-- <div class="list list-inset">
+    <label class="item item-input">
+      <i class="icon ion-speakerphone placeholder-icon"></i>
+      <input type="text" placeholder="Let me speak..." ng-model="data.speechText">
+    </label>
+  </div>
+  <button class="button button-full button-positive" ng-click="speakText()">
+    Get Answer
+  </button> -->
+  <button class="button button-full button-positive ion-ios-mic-outline" style="font-size:35px;" ng-click="record()">
+  </button>
+  <div class="card" id="text" style="text-align:center">
+    <div class="item item-text-wrap fillForwards">
+      {{textToSpeakOnLoad}}
+    </div>
+  </div>
+  <div class="card">
+    <div class="item item-text-wrap" style="text-align:center;background-color:#77bf44">
+      {{recognizedText}}{{spokenValue}}
+    </div>
+  </div>
+  <div class="card" ng-if="containerFlag == 'intro'">
+    <div class="merchandisePerf">
+      <div class="card list-card" ng-repeat="x in things">
+        <div class="item item-text-wrap  cardText">
+          {{x}}
+        </div>
+        <div class="item item-image imageDiv">
+        <div class="image"><img src="/img/{{x}}.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sales container -->
+  <div class="salesClass" ng-if="containerFlag == 'sales'">
+    <div class="card" ng-repeat="y in cardsDataContents">
+      <div class="item item-text-wrap ion-alert-circled">
+      {{y.key}}
+      </div>
+    </div>
+  </div>
+  <!-- sales content container -->
+  <div class="salesClass" ng-if="containerFlag == 'sales content'">
+ <div class="card" ng-repeat="z in properties">
+  <div class="item item-text-wrap row">
+    <div class="col col-center">{{z.property}}
+    </div>
+    <div class="middle col col-center">
+                    <!-- <img src="assets/img/face.png"> -->
+    </div>
+    <div class="right col col-center">{{z.value}}
+    </div>
+  </div>
+  </div>
+
+  </div>
+  <!-- furniture container -->
+  <!-- inventory container -->
+  <!-- AES container -->
+  <!-- Wages container -->
+</ion-content>
+</ion-view>

@@ -1,0 +1,192 @@
+
+		<ion-tabs class="tabs-positive tabs-color-stable tabs-top" ng-controller="chartsController">
+    	<ion-tab  on-select="" title="{{'Bar Chart'}}">
+    		<ion-view>
+    			<ion-content has-header="true" scroll="false">
+    				    <ion-view locate-items view-title="Find Location">
+						<ion-content>
+						  <div class="list list-inset">
+						    <label class="item item-input">
+						     <select ng-init="getStoreDD()" ng-model="selectedStore" id="storeDropDown" ng-change= "getStore(selectedStore);getDataForChart() " >
+				<option class="placeholder" disabled value="">Select Store</option>
+				<option ng-repeat= " store in stores" value="{{store}}" >{{store}}</option>
+			</select>
+						    </label>
+						  </div>
+						  <div>
+	<div>
+    <c3-chart style="display:inline-block" data="myData" height="200" ng-style="{'width':width}" ng-init = " getDataForChart()"></c3-chart>
+</div>
+</div>
+
+						</ion-content>
+						</ion-view>
+
+    			</ion-content>
+    		</ion-view>
+    	</ion-tab>
+		  <ion-tab title="{{'Line Chart'}}">
+	  	     <ion-view>
+
+	  	     <ion-content has-header="true" scroll="false">
+    				    <ion-view locate-items view-title="Find Location">
+						<ion-content>
+						  <div class="list list-inset">
+						    <label class="item item-input">
+
+  <ion-radio id="yearBtn"  ng-model = "year.value" value="2015" ng-click= "getDataFromServer(year.value);" name="optradio">2015</ion-radio>
+				<ion-radio id="yearBtn" ng-model ="year.value" value ="2016" ng-click= "getDataFromServer(year.value);" type="radio"  name="optradio">2016</ion-radio>
+
+
+	        <select ng-model="selectedStore" id="storeDropDown" ng-change= "getStore(selectedStore);getSalesComparison(selectedStore);" >
+				<option class="placeholder" disabled value="">Select Store</option>
+				<option ng-repeat= " store in stores" value="{{store}}" >{{store}}</option>
+			</select>
+			 </label>
+			 <div class="list list-inset">
+
+
+    <line-chart style="display:inline-block" data="myData" height="200" ng-style="{'width':width}" ng-init = " getDataFromServer(year.value)"></line-chart>
+</div>
+			</div>
+
+
+						  </div>
+						</ion-content>
+						</ion-view>
+  	 </ion-tab>
+  	 <ion-tab title="{{'Combined Chart'}}">
+	  	     <ion-view>
+    			  <ion-content has-header="true" scroll="false">
+    				    <ion-view locate-items view-title="Find Location">
+						<ion-content>
+						  <div class="list list-inset">
+						    <label class="item item-input">
+
+
+				<ion-radio id="yearBtn"  ng-model = "yearRadio" value ="2012" ng-click= "getYear(2012);" name="optradio">2012</ion-radio>
+				<ion-radio id="yearBtn" ng-model ="yearRadio" value ="2013" ng-click= "getYear(2013);" type="radio"  name="optradio">2013</ion-radio>
+
+	        <select ng-model="selectedStore" id="storeDropDown" ng-change= "getStore(selectedStore);getSalesComparison(selectedStore);" >
+				<option class="placeholder" disabled value="">Select Store</option>
+				<option ng-repeat= " store in stores" value="{{store}}" >{{store}}</option>
+			</select>
+
+						    </label>
+						  </div>
+						</ion-content>
+		      </ion-view>
+  	 </ion-tab>
+</ion-tabs>
+<!--<div class="row table-rows">
+			<div class="col-lg-12" >
+
+			<select ng-model="selectedStore" id="storeDropDown" ng-change= "getStore(selectedStore);" >
+				<option class="placeholder" disabled value="">Select Year</option>
+				<option ng-repeat= " store in stores" value="{{store}}" >{{store}}</option>
+			</select>
+
+				<!--<label class="radio-inline"><input ng-model = "timeLevel" id="yearBtn" value= "Year" ng-click= "getUrlTime(1);" type="radio" name="optradio">Year</label>
+				<label class="radio-inline"><input id="quarterBtn"  ng-model = "timeLevel" value ="Quarter" ng-click= "getUrlTime(2);" type="radio" name="optradio">Quarter</label>
+				<label class="radio-inline"><input id="monthBtn" ng-model ="timeLevel" value ="Month" ng-click= "getUrlTime(3);" type="radio"  name="optradio">Month</label>
+
+
+
+			</div>
+			<div class="col-lg-12">
+
+				<select ng-model="selectedWeek"  id="weekDropDown" ng-change="getWeekFlag(selectedWeek);">
+					<option class="placeholder" disabled value="">Select Week</option>
+					<option ng-repeat= " week in weeks" value="{{week.week}}" >{{week.element}}</option>
+				</select>
+			</div>
+		</div> -->
+
+	<!--	<div class="row table-rows">
+
+			<select ng-model="selectedStore" id="storeDropDown" ng-change= "getStore(selectedStore);" >
+				<option class="placeholder" disabled value="">Select Year</option>
+				<option ng-repeat= " store in stores" value="{{store}}" >{{store}}</option>
+			</select>
+
+			<div class="col-lg-3">
+				1.Select SBU:
+				<select ng-model="div" ng-init = "div = selectedFilterObject['Category']['selectedDiv']" style="min-width:100%;" id="divDD" ng-change= "getDropdownValues(div, 'Division','selectedDiv','Department','Category','Division','selectedDiv');
+				clearFields('Div','Category');" >
+				<option class="placeholder" disabled value="">Select SBU</option>
+				<option ng-repeat= " div in selectedFilterObject['Category']['divisions']" value="{{div.element}}" >{{div.element}}</option>
+			</select>
+		</div>
+
+		<div class="col-lg-3" >
+
+			2.Select Department:
+			<select ng-model="dept"  ng-init = "dept = selectedFilterObject['Category']['selectedDept']" style="min-width:100%;"
+			ng-change="getDropdownValues(dept,'Department','selectedDept','Catgroup','Category','Division','selectedDiv');clearFields('Dept','Category');"  >
+				<option class="placeholder" disabled value="">Select Department</option>
+				<option ng-repeat= " dept in selectedFilterObject['Category']['departments']" value="{{dept.element}}" >{{dept.element}}</option>
+			</select>
+		</div>
+		<div class="col-lg-3">
+			3.Select Category Portfolio:
+			<select ng-model="catp"  ng-init = "catp = selectedFilterObject['Category']['selectedCatp'] " style="min-width:100%;" ng-click = "displayValidation('categoryPortfolio', 'Category');"  ng-change="getDropdownValues(catp,'Catgroup','selectedCatp','Category','Category','Department','selectedDept');clearFields('Catp','Category')"  >
+				<option class="placeholder" disabled value="">Select Category Portfolio</option>
+				<option ng-repeat= "catp in selectedFilterObject['Category']['categoryGroups']" value="{{catp.element}}" >{{catp.element}}</option>
+			</select>
+		</div>
+
+	</div>
+
+	<div class="row table-rows"  >
+
+		<div class="col-lg-11">
+			<strong>Merchandising Hierarchy: </strong>
+
+			{{selectedFilterObject.Category.selectedDiv}}
+			<span ng-if="selectedFilterObject.Category.selectedDept !=''">/</span>
+			{{selectedFilterObject.Category.selectedDept}}
+			<span ng-if="selectedFilterObject.Category.selectedCatp !=''">/</span>
+			{{selectedFilterObject.Category.selectedCatp}}
+			<span ng-if="selectedFilterObject.Category.selectedCategory !=''">/</span>
+			{{selectedFilterObject.Category.selectedCategory}}
+			<span ng-if="selectedFilterObject.Category.selectedSubcategory !=''">/</span>
+			{{selectedFilterObject.Category.selectedSubcategory}}
+
+			<span ng-if="selectedFilterObject.Category.selectedFineline !=''">/</span>
+			{{selectedFilterObject.Category.selectedFineline}}
+			<span ng-if="selectedFilterObject.Category.selectedVendor !=''">/</span>
+			{{selectedFilterObject.Category.selectedVendor}}
+
+			<br/>
+			Press the submit button once you have made your selection. Vendors will only be populated for Category, Subcategory and Fineline.
+		</div>
+
+		<div class="col-lg-1 pull-right">
+			<button ng-click= "checkFilters('Category', 'validationMsg1');getUrlParameters();" type="button" style="cursor:pointer" class="btn-sm btn-primary exportButton pull-right" >Submit </button>
+		</div>
+	</div>
+
+
+
+
+
+<div class="container-fluid" style="text-align:center; padding-top:2px; padding-bottom:-30px"  data-ng-show="reverse">
+	<div ng-if="tabIndex!=4">
+
+		<strong>Merchandising Hierarchy: </strong>
+		{{selectedFilterObject.Category.selectedDiv}} <span ng-if="selectedFilterObject.Category.selectedDept !=''">/</span>
+		{{selectedFilterObject.Category.selectedDept}}  <span ng-if="selectedFilterObject.Category.selectedCatp !=''">/</span>
+		{{selectedFilterObject.Category.selectedCatp}}
+		<span ng-if="selectedFilterObject.Category.selectedCategory !=''">/</span>
+		{{selectedFilterObject.Category.selectedCategory}} <span ng-if="selectedFilterObject.Category.selectedSubcategory !=''">/</span>
+		{{selectedFilterObject.Category.selectedSubcategory}}
+		<br/>
+	</div>
+	<p>Click the arrow below to view filters</p>
+</div>
+
+<div  style="position:relative;">
+	<div style="text-align:center;">
+		<img alt="" src="assets/img/arrow.png" style="max-height:15px !important;cursor:pointer;" ng-class="{'':!reverse,'rotate':reverse}"  ng-click="isitopen();" ></img>
+	</div>
+</div>  -->

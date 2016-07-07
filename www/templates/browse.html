@@ -1,0 +1,30 @@
+<ion-view ng-controller="browseController">
+    <ion-content>
+    <div class="row customRow">
+      <div class="col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Region
+          </div>
+          <select ng-model="selectedRegion" ng-options="val.Reg for val in locations | unique:'locations.Reg'" ng-change="changedRegion(selectedRegion.Reg)">
+            <option>{{val.Reg}}</option>
+          </select>
+        </label>
+      </div>
+      <div class="col">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Market
+          </div>
+          <select ng-model="selectedMarket" ng-options="val.Market for val in locations | unique:'locations.Market'" ng-change="changedMarket(selectedMarket.Market)">
+            <option>{{val.Market}}</option>
+          </select>
+        </label>
+      </div>
+      <button class="button button-calm" ng-click="initialize()">
+        Reset
+      </button>
+    </div>
+    <div id="map" data-tap-disabled="true"></div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,89 @@
+[  
+{
+    "wmt_wk": 18,
+    "store_nbr": 3985,
+    "sales_actl": 1076,
+    "sales_plan": 4628,
+	"year":2015
+	
+  },
+    {
+    "wmt_wk": 19,
+    "store_nbr": 3985,
+    "sales_actl": 6269,
+    "sales_plan": 2677,
+	"year":2015
+	
+	
+  },
+    {
+    "wmt_wk": 20,
+    "store_nbr": 3985,
+    "sales_actl": 4832,
+    "sales_plan": 3318,
+	"year":2015
+	
+  },
+    {
+    "wmt_wk": 21,
+    "store_nbr": 3985,
+    "sales_actl": 7104,
+    "sales_plan": 4096,
+	"year":2015
+	
+  },
+    {
+    "wmt_wk": 22,
+    "store_nbr": 3985,
+    "sales_actl": 4689,
+    "sales_plan": 3098,
+	"year":2015
+	
+  },
+      {
+    "wmt_wk": 18,
+    "store_nbr": 3985,
+    "sales_actl": 4689,
+    "sales_plan": 3098,
+	"year":2016
+	
+  },
+      {
+    "wmt_wk": 19,
+    "store_nbr": 3985,
+    "sales_actl": 7104,
+    "sales_plan": 4096,
+	"year":2016
+	
+  },
+      {
+    "wmt_wk": 20,
+    "store_nbr": 3985,
+    "sales_actl": 4832,
+    "sales_plan": 3318,
+	"year":2016
+	
+  },
+      {
+    "wmt_wk": 21,
+    "store_nbr": 3985,
+    "sales_actl": 6269,
+    "sales_plan": 2677,
+	"year":2016
+	
+	
+  },
+  {
+    "wmt_wk": 22,
+    "store_nbr": 3985,
+    "sales_actl": 1076,
+    "sales_plan": 4628,
+	"year":2016
+	
+  }
+
+
+
+
+
+]
